@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app = "login_module">
+<head>
+	<title>Login</title>
+	<script type="text/javascript" src = "lib/angular/angular.min.js"></script>
+	<script type="text/javascript" src = "lib/angular/angular.min.js.map"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type = "text/javascript" src = "lib/app/login.js"></script>
+</head>
+<body>
+	<div class="page-header">
+		<h1 style="text-align: center">Spiral-G Login</h1>
+	</div>
+
+	<div class="container">
+		
+			<div class="col-sm-4"></div>
+		    <div class="col-sm-4 col-md-offset" ng-controller="loginController as loginCtrl" >	
+		    	<form name="login" ng-submit="loginCtrl.loginSubmit()">
+					<div class="form-group" >
+					    <label for="email">Email address:</label>
+					    <input type="email" class="form-control" id="email" ng-model = "loginCtrl.username" username-validation>
+					</div>
+
+					<div class="alert alert-warning" ng-if = "login.$error.username">
+						<strong>Warning!</strong> Username is not valid.
+					</div>
+
+					<div class="form-group">
+					    <label for="pwd">Password:</label>
+					    <input type="password" class="form-control" id="pwd" ng-model = "loginCtrl.password">
+					</div>
+
+				  	<input type="submit" class="btn btn-info" value="Submit">
+				</form>    	
+		    </div>
+		    <div class="col-sm-4"></div>
+	  	</div>
+	</div>
+
+</body>
+</html>

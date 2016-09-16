@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="appModule">
+<head>
+	<title>Create App</title>
+	<script type="text/javascript" src = "lib/angular/angular.min.js"></script>
+	<script type="text/javascript" src = "lib/angular/angular.min.js.map"></script>
+	<script type="text/javascript" src = "lib/app/app.js"></script>
+	<script type = "text/javascript" src = "lib/app/login.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="page-header">
+		<h1 style="text-align : center">App Management</h1>
+	</div>
+	  <div class="container-fluid">
+	<div class = "container-fluid bg-3" ng-controller="appController as appCtrl" >
+		<div class="row">
+		
+			<div class = "col-sm-12">
+				<form name="myForm" class="form" >
+					<div class="form-group">
+					    <label>App name: </label>
+					    <input type="text" class="form-control" ng-model = "appCtrl.name" validate-name>
+					</div>
+
+					<div class="alert alert-warning" ng-if = "myForm.$error.name">
+						<strong>Warning!</strong> Name must be in range of 1- 64 characters and not blank.
+					</div>
+
+					<div class="form-group">
+					    <label>Description: </label>
+					    <textarea class="form-control" rows="4" id="description" ng-model = "appCtrl.desc"></textarea>
+					</div>
+					
+				  	<input type="submit" ng-click="appCtrl.createApp()" class="btn btn-info" value="Submit" ng-disabled="myForm.$invalid">
+				  	<p></p>
+					<p></p>
+				  	<div class="alert alert-danger" ng-if="appCtrl.message">
+					  	<strong>Danger!</strong> {{appCtrl.message}}.
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+	<p></p>
+	<p></p>
+	<div class = "container-fluid bg-3" ng-controller="appController as appCtrl" >
+		<div class="row">
+				<div class = "col-sm-12" >
+					<table class="table table-bordered">
+					    <thead>
+					    	<tr>
+						        <th>Num</th>
+						        <th>Name</th>
+						        <th>Description</th>
+					      	</tr>
+					    </thead>
+					    <tbody ng-repeat="item in appCtrl.items">
+					      	<tr>
+						        <td>{{item.num}}</td>
+					    
+						        <td>{{item.name}}</td>		     
+					     
+						        <td>{{item.description}}</td>
+					      	</tr>
+					    </tbody>
+					</table>
+				</div>
+				
+		</div>
+	</div>
+	</div>
+</body>
+</html>
